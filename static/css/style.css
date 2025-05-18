@@ -1,0 +1,412 @@
+/* Cores Elegantes com Tom de Aventura e Viagem (Ênfase nos Textos) */
+:root {
+    --primary-color: #2e7d32;
+    --secondary-color: #1565c0;
+    --background-color: #f8f8f8;
+    --message-user-bg: #a5d6a7;
+    --message-bot-bg: #fff8e1;
+    --font-color: #212121;
+    --accent-color: #d84315;
+    --suggestion-bg: rgba(63, 81, 181, 0.9);
+    --suggestion-hover-bg: rgba(48, 63, 159, 1);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --chatbot-bg: #1565c0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+    background-image: url('../static/images/fundo_buenos_aires.jpg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    padding-top: 70px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 12px 18px;
+    margin-bottom: 15px; /* Reduzi ainda mais a margem inferior */
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.1em; /* Ajustei um pouco o tamanho da fonte */
+    margin-bottom: 2px;
+}
+
+header p {
+    font-size: 0.65em; /* Ajustei um pouco o tamanho da fonte */
+    opacity: 0.9;
+    margin-bottom: 2px;
+}
+
+main {
+    display: flex;
+    flex-direction: column; /* Alinhar os elementos verticalmente em telas menores */
+    align-items: center; /* Centralizar os elementos horizontalmente */
+    gap: 20px; /* Aumentei o espaçamento entre as seções */
+    width: 95%;
+    margin-bottom: 70px; /* Ajustei a margem inferior para o chatbot fixo */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.destaques-section {
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    width: 100%; /* Ocupa toda a largura */
+    box-sizing: border-box;
+    margin-top: 80px; /* Ajustei a margem superior */
+}
+
+.destaques-section h2 {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 1em;
+    text-shadow: none;
+}
+
+.destaques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajustei o minmax para evitar quebras muito cedo */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.destino {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.destino:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.destino img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.destino h3 {
+    margin: 8px 0;
+    font-size: 0.9em;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.destino p {
+    font-size: 0.7em;
+    padding: 0 8px 8px;
+    opacity: 0.8;
+}
+
+.chatbot-section-inferior {
+    border-radius: 8px 8px 0 0; /* Arredondar apenas a parte superior */
+    box-shadow: 0 -2px 10px var(--shadow-color); /* Sombra na parte superior */
+    z-index: 101;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(var(--chatbot-bg-rgb, 21, 101, 192), 0.95); /* Cor de fundo mais sólida */
+    margin: 0;
+}
+
+.chatbot-container {
+    background: transparent; /* O fundo do container é transparente agora */
+    border-radius: 0; /* Remover border-radius do container */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    box-shadow: none; /* Remover a sombra interna */
+}
+
+.chat-header {
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo um pouco mais escuro */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0; /* Remover border-radius */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#clear-chat {
+    background-color: transparent;
+    color: white; /* Texto branco para melhor contraste */
+    border: 1px solid white;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#clear-chat:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-messages {
+    padding: 10px;
+    max-height: 180px; /* Ajustei a altura máxima */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    color: white; /* Texto branco para melhor contraste */
+    margin-bottom: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    word-break: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: rgba(var(--message-user-bg-rgb, 165, 214, 167), 0.8); /* Cor mais sólida */
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: rgba(var(--message-bot-bg-rgb, 255, 248, 225), 0.8); /* Cor mais sólida */
+    color: var(--font-color); /* Manter a cor original do bot */
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo levemente escuro */
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-right: 8px;
+    font-size: 0.75em;
+    transition: border-color 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.chat-input input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chat-input input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 2px rgba(var(--accent-color-rgb), 0.6);
+}
+
+#send-button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.75em;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+#send-button:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.5);
+}
+
+.chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px;
+    gap: 4px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo levemente escuro */
+    border-radius: 0 0 8px 8px;
+    margin-top: 8px;
+}
+
+.suggestion-button {
+    background-color: var(--suggestion-bg);
+    color: white;
+    border: 1px solid var(--suggestion-bg);
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-weight: bold;
+    opacity: 0.9;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+.suggestion-button:hover {
+    background-color: var(--suggestion-hover-bg);
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1em;
+    }
+    header p {
+        font-size: 0.6em;
+    }
+    main {
+        padding: 10px;
+        gap: 15px;
+        margin-bottom: 110px; /* Aumentar a margem para o chatbot fixo */
+    }
+    .destaques-section {
+        margin-top: 70px;
+        padding: 10px;
+    }
+    .destaques-section h2 {
+        font-size: 0.9em;
+    }
+    .destino img {
+        height: 90px;
+    }
+    .destino h3 {
+        font-size: 0.8em;
+    }
+    .destino p {
+        font-size: 0.65em;
+    }
+    .chatbot-section-inferior {
+        padding: 8px;
+    }
+    .chatbot-container {
+        width: 100%; /* Garante que o container do chatbot ocupe toda a largura */
+        max-width: 400px; /* Define uma largura máxima para evitar que fique muito largo */
+    }
+    .chat-header h2 {
+        font-size: 0.85em;
+    }
+    .chat-messages {
+        max-height: 150px;
+        padding: 8px;
+    }
+    .message {
+        font-size: 0.75em;
+        padding: 6px 10px;
+    }
+    .chat-input input {
+        font-size: 0.65em;
+        padding: 6px;
+        margin-right: 6px;
+    }
+    #send-button {
+        font-size: 0.65em;
+        padding: 6px 10px;
+    }
+    .chat-suggestions {
+        padding: 5px;
+        gap: 3px;
+    }
+    .suggestion-button {
+        font-size: 0.6em;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 0.9em;
+    }
+    header p {
+        display: none;
+    }
+    .destaques-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .destino img {
+        height: 140px;
+    }
+    .chatbot-section-inferior {
+        padding: 8px;
+    }
+    .chat-header h2 {
+        font-size: 0.8em;
+    }
+    .chat-messages {
+        max-height: 120px;
+        padding: 6px;
+    }
+    .message {
+        font-size: 0.7em;
+        padding: 5px 8px;
+    }
+    .chat-input {
+        padding: 8px;
+    }
+    .chat-input input {
+        font-size: 0.6em;
+        padding: 5px;
+        margin-right: 5px;
+    }
+    #send-button {
+        font-size: 0.6em;
+        padding: 5px 8px;
+    }
+    .chat-suggestions {
+        padding: 4px;
+        gap: 2px;
+    }
+    .suggestion-button {
+        font-size: 0.55em;
+        padding: 2px 5px;
+    }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventuras Hispânicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <header>
+        <h1>Descubra a Magia da América Hispânica</h1>
+        <p>Roteiros culturais e experiências autênticas em terras hispânicas.</p>
+    </header>
+
+    <main>
+        <section class="destaques-section">
+            <h2>Destinos Imperdíveis</h2>
+            <div class="destaques-grid">
+                <div class="destino">
+                    <img src="../static/images/buenos_aires.jpg" alt="Buenos Aires">
+                    <h3>Buenos Aires, Argentina</h3>
+                    <p>A capital vibrante com tango, arquitetura europeia e paixão.</p>
+                </div>
+                <div class="destino">
+                    <img src="../static/images/machu_picchu.jpg" alt="Machu Picchu">
+                    <h3>Machu Picchu, Peru</h3>
+                    <p>A cidade perdida dos Incas, um mistério nas alturas dos Andes.</p>
+                </div>
+                <div class="destino">
+                    <img src="../static/images/barcelona.jpg" alt="Barcelona">
+                    <h3>Barcelona, Espanha</h3>
+                    <p>Arte modernista, praias ensolaradas e a energia contagiante da Catalunha.</p>
+                </div>
+                <div class="destino">
+                    <img src="../static/images/cartagena.jpg" alt="Cartagena">
+                    <h3>Cartagena, Colômbia</h3>
+                    <p>Cidade murada com cores vibrantes e a brisa do Caribe.</p>
+                </div>
+                <div class="destino">
+                    <img src="../static/images/cuba.jpg" alt="Cuba">
+                    <h3>Havana, Cuba</h3>
+                    <p>Carros clássicos, música salsa e a rica história caribenha.</p>
+                </div>
+                <div class="destino">
+                    <img src="../static/images/mexico_city.jpg" alt="Cidade do México">
+                    <h3>Cidade do México, México</h3>
+                    <p>Uma metrópole com história ancestral e cultura contemporânea.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chatbot-section-inferior">
+            <div class="chatbot-container">
+                <div class="chat-header">
+                    <h2>Chatbot de Aventuras</h2>
+                    <button id="clear-chat">Limpar Chat</button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">Olá\! Pronto para planejar sua aventura hispânica?</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+                    <button id="send-button"><span class="material-symbols-outlined">send</span> Enviar</button>
+                </div>
+                <div class="chat-suggestions" id="chat-suggestions">
+                    <button class="suggestion-button" data-suggestion="Qual o melhor destino na Argentina?">Qual o melhor destino na Argentina?</button>
+                    <button class="suggestion-button" data-suggestion="O que fazer em Machu Picchu?">O que fazer em Machu Picchu?</button>
+                    <button class="suggestion-button" data-suggestion="Roteiros para a Espanha">Roteiros para a Espanha</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-button');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatSuggestions = document.getElementById('chat-suggestions');
+            const clearChatButton = document.getElementById('clear-chat');
+
+            function appendMessage(message, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = message;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (message) {
+                    appendMessage(message, true);
+                    userInput.value = '';
+                    // Simulação de resposta do bot
+                    setTimeout(() => {
+                        const botResponse = getBotResponse(message);
+                        appendMessage(botResponse, false);
+                    }, 500);
+                }
+            }
+
+            function getBotResponse(userMessage) {
+                userMessage = userMessage.toLowerCase();
+                if (userMessage.includes('argentina')) {
+                    return "Buenos Aires é imperdível na Argentina, com seu tango e cultura vibrante.";
+                } else if (userMessage.includes('machu picchu')) {
+                    return "Machu Picchu oferece uma experiência histórica e paisagens de tirar o fôlego.";
+                } else if (userMessage.includes('espanha')) {
+                    return "A Espanha tem cidades incríveis como Barcelona e Madri, cada uma com seu charme.";
+                } else {
+                    return "Que interessante\! Conte-me mais sobre o que você procura.";
+                }
+            }
+
+            sendButton.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            chatSuggestions.addEventListener('click', (event) => {
+                if (event.target.classList.contains('suggestion-button')) {
+                    userInput.value = event.target.dataset.suggestion;
+                    sendMessage();
+                }
+            });
+
+            clearChatButton.addEventListener('click', () => {
+                chatMessages.innerHTML = '<div class="message bot-message">Olá\! Pronto para planejar sua aventura hispânica?</div>';
+            });
+        });
+    </script>
+</body>
+</html>
