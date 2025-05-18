@@ -19,7 +19,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s ease;
-    background-image: url('../static/images/fundo_buenos_aires.jpg.jpg');
+    background-image: url('../static/images/fundo_buenos_aires.jpg.jpg'); /* POTENCIAL ERRO AQUI */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

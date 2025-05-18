@@ -6,7 +6,8 @@
     <title>Aventuras Hispânicas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">></head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 <body>
     <header>
         <h1>Descubra a Magia da América Hispânica</h1>
@@ -23,27 +24,27 @@
                     <p>A capital vibrante com tango, arquitetura europeia e paixão.</p>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/machu_picchu.jpg" alt="Machu Picchu">
+                    <img src="{{ url_for('static', filename='images/machu_picchu.jpg') }}" alt="Machu Picchu">
                     <h3>Machu Picchu, Peru</h3>
                     <p>A cidade perdida dos Incas, um mistério nas alturas dos Andes.</p>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/barcelona.jpg" alt="Barcelona">
+                    <img src="{{ url_for('static', filename='images/barcelona.jpg') }}" alt="Barcelona">
                     <h3>Barcelona, Espanha</h3>
                     <p>Arte modernista, praias ensolaradas e a energia contagiante da Catalunha.</p>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/cartagena.jpg" alt="Cartagena">
+                    <img src="{{ url_for('static', filename='images/cartagena.jpg') }}" alt="Cartagena">
                     <h3>Cartagena, Colômbia</h3>
                     <p>Cidade murada com cores vibrantes e a brisa do Caribe.</p>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/cuba.jpg" alt="Cuba">
+                    <img src="{{ url_for('static', filename='images/cuba.jpg') }}" alt="Cuba">
                     <h3>Havana, Cuba</h3>
                     <p>Carros clássicos, música salsa e a rica história caribenha.</p>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/mexico_city.jpg" alt="Cidade do México">
+                    <img src="{{ url_for('static', filename='images/mexico_city.jpg') }}" alt="Cidade do México">
                     <h3>Cidade do México, México</h3>
                     <p>Uma metrópole com história ancestral e cultura contemporânea.</p>
                 </div>
@@ -57,7 +58,7 @@
                     <button id="clear-chat">Limpar Chat</button>
                 </div>
                 <div class="chat-messages" id="chat-messages">
-                    <div class="message bot-message">Olá\! Pronto para planejar sua aventura hispânica?</div>
+                    <div class="message bot-message">Olá! Pronto para planejar sua aventura hispânica?</div>
                 </div>
                 <div class="chat-input">
                     <input type="text" id="user-input" placeholder="Digite sua mensagem...">
@@ -94,25 +95,31 @@
                 if (message) {
                     appendMessage(message, true);
                     userInput.value = '';
-                    // Simulação de resposta do bot
-                    setTimeout(() => {
-                        const botResponse = getBotResponse(message);
-                        appendMessage(botResponse, false);
-                    }, 500);
+                    fetch('/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `mensagem=${encodeURIComponent(message)}`,
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        appendMessage(data.resposta, false);
+                        chatSuggestions.innerHTML = '';
+                        data.sugestoes.forEach(sugestao => {
+                            const button = document.createElement('button');
+                            button.classList.add('suggestion-button');
+                            button.dataset.suggestion = sugestao;
+                            button.textContent = sugestao;
+                            chatSuggestions.appendChild(button);
+                        });
+                    });
                 }
             }
 
             function getBotResponse(userMessage) {
-                userMessage = userMessage.toLowerCase();
-                if (userMessage.includes('argentina')) {
-                    return "Buenos Aires é imperdível na Argentina, com seu tango e cultura vibrante.";
-                } else if (userMessage.includes('machu picchu')) {
-                    return "Machu Picchu oferece uma experiência histórica e paisagens de tirar o fôlego.";
-                } else if (userMessage.includes('espanha')) {
-                    return "A Espanha tem cidades incríveis como Barcelona e Madri, cada uma com seu charme.";
-                } else {
-                    return "Que interessante\! Conte-me mais sobre o que você procura.";
-                }
+                // Esta função não é mais usada, a lógica do bot está no backend
+                return "Processando sua mensagem...";
             }
 
             sendButton.addEventListener('click', sendMessage);
@@ -130,7 +137,7 @@
             });
 
             clearChatButton.addEventListener('click', () => {
-                chatMessages.innerHTML = '<div class="message bot-message">Olá\! Pronto para planejar sua aventura hispânica?</div>';
+                chatMessages.innerHTML = '<div class="message bot-message">Olá! Pronto para planejar sua aventura hispânica?</div>';
             });
         });
     </script>
