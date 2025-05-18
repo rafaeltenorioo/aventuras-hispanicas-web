@@ -1,1 +1,1 @@
-web: gunicorn==21.2.0 app:app
+web: gunicorn app:app
