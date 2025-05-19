@@ -9,7 +9,7 @@ from google.genai import types
 app = Flask(__name__)
 
 # Configurar a API Key
-os.environ["GOOGLE_API_KEY"] = "SUA_CHAVE_DE_API"  # Substitua pela sua chave de API válida
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBbbF0ei8UXYphd8BDJI_gjd1vlmW0UKg8"  # Substitua pela sua chave de API válida
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 MODEL_ID = "gemini-2.0-flash"
 
