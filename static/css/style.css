@@ -63,10 +63,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* REDUZI O GAP */
+    gap: 15px;
     width: 100%;
     margin-bottom: 0;
-    padding: 15px; /* REDUZI O PADDING */
+    padding: 15px;
     box-sizing: border-box;
     margin-top: 110px;
     flex-grow: 1;
@@ -74,26 +74,28 @@ main {
 
 .destaques-section {
     border-radius: 10px;
-    padding: 8px 15px; /* REDUZI AINDA MAIS O PADDING */
+    padding: 8px 15px;
     text-align: center;
     box-shadow: 0 4px 10px var(--shadow-color);
-    width: 90%;
+    width: 70%; /* MANTEMOS A LARGURA */
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.4);
+    margin-left: 20px;
+    margin-right: auto;
 }
 
 .destaques-section h2 {
     color: black;
-    margin-bottom: 10px; /* REDUZI A MARGEM */
-    font-size: 0.85em; /* DIMINUI AINDA MAIS A FONTE */
+    margin-bottom: 10px;
+    font-size: 1em; /* AUMENTA UM POUCO A FONTE */
     text-shadow: none;
 }
 
 .destaques-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* REDUZI O GAP */
-    margin-top: 10px; /* REDUZI A MARGEM */
+    gap: 10px;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -102,7 +104,7 @@ main {
     justify-content: space-around;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; /* REDUZI A MARGEM */
+    margin-bottom: 10px;
 }
 
 .destino {
@@ -113,33 +115,33 @@ main {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: 48%;
     margin: 0;
-    padding: 8px; /* REDUZI O PADDING */
+    padding: 8px;
 }
 
 .destino:hover {
-    transform: translateY(-2px); /* REDUZI O DESLOCAMENTO */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* REDUZI A SOMBRA */
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .destino img {
     width: 100%;
-    height: 100px; /* REDUZI A ALTURA */
+    height: 100px;
     object-fit: cover;
     background-color: white;
     border-radius: 10px 10px 0 0;
 }
 
 .destino h3 {
-    margin: 5px 0; /* REDUZI A MARGEM */
-    font-size: 1em; /* REDUZI A FONTE */
+    margin: 5px 0;
+    font-size: 1em;
     color: var(--primary-color);
     font-weight: bold;
     text-align: center;
 }
 
 .destino p {
-    font-size: 0.8em; /* REDUZI A FONTE */
-    padding: 0 10px 10px; /* REDUZI O PADDING */
+    font-size: 0.8em;
+    padding: 0 10px 10px;
     opacity: 0.9;
     text-align: center;
 }
