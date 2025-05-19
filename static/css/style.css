@@ -79,13 +79,13 @@ main {
     box-shadow: 0 4px 10px var(--shadow-color);
     width: 90%;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.4); /* Mais transparente */
 }
 
 .destaques-section h2 {
     color: black;
     margin-bottom: 15px;
-    font-size: 1.5em;
+    font-size: 1.3em; /* Diminui o tamanho da fonte */
     text-shadow: none;
 }
 
@@ -102,10 +102,11 @@ main {
     justify-content: space-around;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 20px; /* ADICIONE ESTA LINHA */
 }
 
 .destino {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.7); /* Um pouco menos transparente que o fundo da seção */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
     overflow: hidden;
@@ -153,8 +154,8 @@ main {
     width: var(--chatbot-lateral-width);
     min-width: var(--chatbot-lateral-width);
     position: fixed;
-    top: auto;
-    bottom: 20px;
+    top: 100px; /* Diminui o top para afastar do header */
+    bottom: auto; /* Garante que não está fixo na parte inferior */
     right: 20px;
     background-color: rgba(var(--secondary-color-rgb, 21, 101, 192), 0.95);
     margin: 0;
@@ -209,7 +210,7 @@ main {
 
 .chat-messages {
     padding: 15px;
-    max-height: calc(100% - 140px);
+    max-height: 60vh; /* Aumenta a altura máxima para o foco na conversa */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -288,29 +289,29 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 10px 15px;
-    gap: 8px;
+    padding: 5px 15px; /* Reduz o padding vertical */
+    gap: 5px; /* Reduz o espaçamento */
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0 0 10px 0;
-    margin-top: 10px;
+    margin-top: 5px; /* Reduz a margem superior */
 }
 
 .suggestion-button {
     background-color: var(--suggestion-bg);
     color: white;
     border: 1px solid var(--suggestion-bg);
-    padding: 6px 12px;
+    padding: 4px 8px; /* Reduz o padding */
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.8em; /* Diminui a fonte */
     font-weight: bold;
-    opacity: 0.9;
+    opacity: 0.7; /* Deixa um pouco mais sutil */
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* Reduz a margem inferior */
 }
 
 .suggestion-button:hover {
     background-color: var(--suggestion-hover-bg);
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
