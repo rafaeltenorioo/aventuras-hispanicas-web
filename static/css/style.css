@@ -74,7 +74,7 @@ main {
 
 .destaques-section {
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
     box-shadow: 0 4px 10px var(--shadow-color);
     width: 90%;
@@ -147,15 +147,15 @@ main {
     border-radius: 10px 0 0 10px;
     box-shadow: -3px 0 12px var(--shadow-color);
     z-index: 101;
-    padding: 15px; /* REDUZI O PADDING INTERNO */
+    padding: 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     width: var(--chatbot-lateral-width);
     min-width: var(--chatbot-lateral-width);
     position: fixed;
-    top: 100px;
-    bottom: auto;
+    top: auto;
+    bottom: 20px;
     right: 20px;
     background-color: rgba(var(--secondary-color-rgb, 21, 101, 192), 0.95);
     margin: 0;
