@@ -87,6 +87,9 @@ def call_agent(agent, message_text=None):
     session = session_service.create_session(app_name=agent.name, user_id="user1", session_id="session1")
     content = types.Content(role="user", parts=[types.Part(text=message_text)]) if message_text else None
     response = "".join(event.content.parts[0].text for event in runner.run(user_id="user1", session_id="session1", new_message=content) if event.is_final_response())
+    print(f"Mensagem recebida pela função call_agent: {message_text}")
+    response = "".join(event.content.parts[0].text for event in runner.run(user_id="user1", session_id="session1", new_message=content) if event.is_final_response())
+    print(f"Resposta gerada pela função call_agent: {response}")
     return response
 
 def gerar_sugestoes_dinamicas(historico):

@@ -6,305 +6,7 @@
     <title>Aventuras Hispânicas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        /* Cores Elegantes com Tom de Aventura e Viagem (Ênfase nos Textos) */
-        :root {
-            --primary-color: #2e7d32;
-            --secondary-color: #1565c0;
-            --background-color: #f8f8f8;
-            --message-user-bg: #a5d6a7;
-            --message-bot-bg: #fff8e1;
-            --font-color: #212121;
-            --accent-color: #d84315;
-            --suggestion-bg: rgba(63, 81, 181, 0.9);
-            --suggestion-hover-bg: rgba(48, 63, 159, 1);
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --chatbot-bg: #1565c0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease;
-            background-image: url('../static/images/fundo_buenos_aires.jpg.');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            position: relative;
-            padding-top: 70px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 12px 18px;
-            margin-bottom: 30px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        header h1 {
-            font-size: 1.4em;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            font-size: 0.8em;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 15px;
-            width: 90%;
-            margin-bottom: 15px;
-        }
-
-        .destaques-section {
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 3px 10px var(--shadow-color);
-            width: calc(60% - 10px);
-            box-sizing: border-box;
-            margin-top: 40px;
-            background-color: transparent;
-        }
-
-        .destaques-section h2 {
-            color: black;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-            text-shadow: none;
-        }
-
-        .destaques-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(150px, 1fr));
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .destino {
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-
-        .destino:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .destino img {
-        width: 100%;
-        height: 100px;
-        object-fit: contain; /* A MÁGICA ACONTECE AQUI! */
-        background-color: white; /* ADICIONAMOS UM FUNDO BRANCO PARA CASO A IMAGEM NÃO PREENCHA TODO O ESPAÇO */
-        border-radius: 8px 8px 0 0;
-        }
-
-        .destino h3 {
-            margin: 5px 0;
-            font-size: 1.1em; /* Aumentando a fonte do título do destino */
-            color: var(--primary-color);
-            font-weight: bold; /* Adicionando negrito para mais ênfase */
-        }
-
-        .destino p {
-            font-size: 0.8em;
-            padding: 0 8px 8px;
-            opacity: 0.8;
-        }
-
-        .chatbot-section-inferior {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px var(--shadow-color);
-            z-index: 101;
-            padding: 12px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            width: calc(40% - 10px);
-            min-width: 240px;
-            position: sticky;
-            bottom: 10px;
-            align-self: flex-end;
-            background-color: transparent;
-        }
-
-        .chatbot-container {
-            background: var(--chatbot-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .chat-header {
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white;
-            text-align: center;
-            padding: 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 8px 8px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-right: 6px;
-        }
-
-        .chat-header h2 {
-            margin: 0;
-            font-size: 0.95em;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-        }
-
-        #clear-chat {
-            background-color: transparent;
-            color: black; /* Letra "Limpar Chat" preta */
-            border: 1px solid var(--secondary-color);
-            padding: 3px 5px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.7em;
-            font-weight: bold; /* Adicionando negrito */
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        #clear-chat:hover {
-            background-color: rgba(var(--secondary-color-rgb), 0.5);
-            color: white;
-        }
-
-        .chat-messages {
-            padding: 8px;
-            max-height: 280px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .message {
-            padding: 5px 8px;
-            border-radius: 8px;
-            font-size: 0.8em;
-            color: var(--font-color);
-            margin-bottom: 3px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-            word-break: break-word;
-        }
-
-        .user-message {
-            align-self: flex-end;
-            background-color: var(--message-user-bg);
-            color: var(--font-color);
-        }
-
-        .bot-message {
-            align-self: flex-start;
-            background-color: var(--message-bot-bg);
-            color: var(--font-color);
-        }
-
-        .chat-input {
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            border-top: 1px solid rgba(0, 0, 0, 0.3);
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .chat-input input {
-            flex-grow: 1;
-            padding: 5px;
-            border: 1px solid var(--secondary-color);
-            border-radius: 10px;
-            margin-right: 5px;
-            font-size: 0.75em;
-            transition: border-color 0.2s ease;
-            background-color: rgba(255, 255, 255, 0.35);
-            color: var(--font-color);
-        }
-
-        .chat-input input:focus {
-            border-color: var(--accent-color);
-            outline: none;
-            box-shadow: 0 0 2px rgba(var(--accent-color-rgb), 0.6);
-        }
-
-        #send-button {
-            background-color: transparent;
-            color: black; /* Letra "Enviar" preta */
-            border: 1px solid var(--primary-color);
-            padding: 5px 8px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.75em;
-            font-weight: bold; /* Adicionando negrito */
-            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
-        }
-
-        #send-button:hover {
-            background-color: rgba(var(--primary-color-rgb), 0.5);
-            color: var(--font-color);
-            transform: scale(1.01);
-        }
-
-        .chat-suggestions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 5px;
-            gap: 2px;
-            background-color: rgba(255, 255, 255, 0.25);
-            border-radius: 0 0 8px 8px;
-            margin-top: 5px;
-        }
-
-        .suggestion-button {
-            background-color: var(--suggestion-bg);
-            color: white;
-            border: 1px solid var(--suggestion-bg);
-            padding: 2px 6px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.7em;
-            font-weight: bold;
-            opacity: 1;
-            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
-        }
-
-        .suggestion-button:hover {
-            background-color: var(--suggestion-hover-bg);
-            color: white;
-            opacity: 1;
-            transform: scale(1.02);
-        }
-    </style>
+    
 </head>
 <body>
     <header>
@@ -319,28 +21,37 @@
             <h2>Destinos Imperdíveis</h2>
             <div class="destaques-grid">
                 <div class="destino">
-                    <img src="../static/images/argentina.jpg">
+                    <div class="destino-imagem">
+                        <img src="../static/images/argentina.jpg">
+                    </div>
                     <div class="destino-info">
                         <h3>Argentina</h3>
                         <p>Terra do tango apaixonante, das vastas planícies da Patagônia e da vibrante Buenos Aires. Descubra a elegância europeia em meio à cultura latino-americana, saboreie vinhos Malbec e aventure-se nos Andes.</p>
                     </div>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/espanha.jpg" alt="Espanha">
+                    <div class="destino-imagem">
+                        <img src="../static/images/espanha.jpg" alt="Espanha">
+                    </div>
                     <div class="destino-info">
                         <h3>Espanha</h3>
                         <p>Um país de contrastes, com a arquitetura modernista de Barcelona, os palácios mouriscos da Andaluzia e a energia cosmopolita de Madri. Delicie-se com tapas, explore praias ensolaradas e mergulhe em séculos de história e arte.</p>
                     </div>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/mexico.jpg" alt="México">
+                    <div class="destino-imagem">
+
+                        <img src="../static/images/mexico.jpg" alt="México">
+                    </div>
                     <div class="destino-info">
                         <h3>México</h3>
                         <p>Uma explosão de cores, sabores e história ancestral. De pirâmides maias e astecas a praias caribenhas e cidades coloniais charmosas. Experimente a culinária apimentada, a música mariachi e a rica herança cultural.</p>
                     </div>
                 </div>
                 <div class="destino">
-                    <img src="../static/images/colombia.jpg" alt="Colômbia">
+                    <div class="destino-imagem">
+                        <img src="../static/images/colombia.jpg" alt="Colômbia">
+                    </div>
                     <div class="destino-info">
                         <h3>Colômbia</h3>
                         <p>Da vibrante Medellín à histórica Cartagena e às paisagens cafeeiras verdejantes. Descubra a alegria de sua gente, a diversidade de sua flora e fauna, e saboreie um dos melhores cafés do mundo.</p>
