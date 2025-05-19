@@ -141,7 +141,7 @@ main {
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: background-color: transparent; /* Cor de fundo mais sólida */
+    background-color: transparent; /* Cor de fundo mais sólida */
     margin: 0;
 }
 
@@ -197,7 +197,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    background-color: background-color: transparent;; /* Fundo levemente transparente */
+    background-color: transparent;; /* Fundo levemente transparente */
 }
 
 .message {
