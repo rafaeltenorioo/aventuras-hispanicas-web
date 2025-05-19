@@ -11,7 +11,7 @@
     --suggestion-hover-bg: rgba(48, 63, 159, 1);
     --shadow-color: rgba(0, 0, 0, 0.4);
     --chatbot-bg: #1565c0;
-    --chatbot-lateral-width: 300px; /* Largura desejada para o chatbot lateral */
+    --chatbot-lateral-width: 320px; /* Aumentei um pouco a largura para dar mais espaço */
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s ease;
-    background-image: url('/static/images/fundo_buenos_aires.jpg'); /* CAMINHO CORRIGIDO! */
+    background-image: url('/static/images/fundo_buenos_aires.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -29,10 +29,10 @@ body {
     box-sizing: border-box;
     display: flex;
     min-height: 100vh;
-    flex-direction: row; /* Alterando para layout de linha */
-    align-items: flex-start; /* Alinhar os itens no início (topo) */
-    justify-content: flex-end; /* Empurrar o conteúdo principal para a esquerda */
-    padding-right: var(--chatbot-lateral-width); /* Espaço para o chatbot na lateral */
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: var(--chatbot-lateral-width);
 }
 
 header {
@@ -56,7 +56,7 @@ header h1 {
 }
 
 header p {
-    font-size: 0.65em;
+    font-size: 0.75em; /* Aumentei a letra do "seu companheiro de viagem..." */
     opacity: 0.9;
     margin-bottom: 2px;
 }
@@ -65,88 +65,88 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    width: 100%; /* Ocupar a largura restante */
-    margin-bottom: 20px; /* Reduzindo a margem inferior */
+    gap: 15px; /* Reduzi um pouco o espaçamento */
+    width: 100%;
+    margin-bottom: 40px; /* Reduzi a margem inferior */
     padding: 10px;
     box-sizing: border-box;
-    margin-top: 90px; /* Ajustando a margem superior */
+    margin-top: 90px; /* Mantenho a margem superior */
 }
 
 .destaques-section {
     border-radius: 8px;
-    padding: 15px;
+    padding: 12px; /* Reduzi o padding */
     text-align: center;
-    box-shadow: 0 3px 10px var(--shadow-color);
-    width: 95%; /* Ajustando a largura para dentro do espaço principal */
+    box-shadow: 0 3px 8px var(--shadow-color); /* Suavizei um pouco a sombra */
+    width: 85%; /* Diminuí a largura para dar mais foco ao fundo */
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.6); /* Adicionei um pouco de transparência para o destaque */
 }
 
 .destaques-section h2 {
     color: black;
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Reduzi a margem inferior */
     font-size: 1em;
     text-shadow: none;
 }
 
 .destaques-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Forçando duas colunas */
-    gap: 10px;
-    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* Reduzi o espaçamento entre os destinos */
+    margin-top: 8px; /* Reduzi a margem superior */
 }
 
 .destino {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Aumentei um pouco a opacidade */
+    border-radius: 6px; /* Arredondamento menor */
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); /* Sombra menor */
     overflow: hidden;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .destino:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px); /* Menos elevação no hover */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra menor no hover */
 }
 
 .destino img {
     width: 100%;
-    height: 120px; /* Aumentando um pouco a altura */
-    object-fit: cover; /* Melhor para preencher o espaço */
+    height: 100px; /* Diminuí a altura da imagem */
+    object-fit: cover;
     background-color: white;
-    border-radius: 8px 8px 0 0;
+    border-radius: 6px 6px 0 0;
 }
 
 .destino h3 {
-    margin: 8px 0;
-    font-size: 0.9em;
+    margin: 6px 0; /* Reduzi a margem */
+    font-size: 0.85em; /* Diminuí a fonte */
     color: var(--primary-color);
     font-weight: bold;
 }
 
 .destino p {
-    font-size: 0.7em;
-    padding: 0 8px 8px;
+    font-size: 0.65em; /* Diminuí a fonte */
+    padding: 0 6px 6px; /* Reduzi o padding */
     opacity: 0.8;
 }
 
 .chatbot-section-inferior {
-    border-radius: 8px 0 0 8px; /* Arredondar apenas a esquerda */
-    box-shadow: -2px 0 10px var(--shadow-color); /* Sombra na esquerda */
+    border-radius: 8px 0 0 8px;
+    box-shadow: -2px 0 10px var(--shadow-color);
     z-index: 101;
-    padding: 10px;
+    padding: 15px; /* Aumentei um pouco o padding interno */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    width: var(--chatbot-lateral-width); /* Largura fixa para a lateral */
+    width: var(--chatbot-lateral-width);
     min-width: var(--chatbot-lateral-width);
     position: fixed;
-    top: 70px; /* Abaixo do header fixo */
-    right: 0;
-    background-color: rgba(var(--secondary-color-rgb, 21, 101, 192), 0.9); /* Cor do header com transparência */
+    top: 85px; /* Ajustei para baixo do header (70px de altura + um pouco de espaço) */
+    right: 15px; /* Adicionei um pouco de espaço da borda direita */
+    background-color: rgba(var(--secondary-color-rgb, 21, 101, 192), 0.95); /* Aumentei um pouco a opacidade */
     margin: 0;
-    height: calc(100vh - 70px); /* Altura total menos a altura do header */
+    height: calc(100vh - 100px); /* Ajustei a altura */
 }
 
 .chatbot-container {
@@ -155,26 +155,26 @@ main {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Ocupar toda a altura da seção */
+    height: 100%;
     box-shadow: none;
 }
 
 .chat-header {
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo levemente escuro para o header do chat */
+    background-color: rgba(0, 0, 0, 0.2);
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 8px; /* Reduzi o padding */
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px 0 0 0; /* Arredondar apenas a parte superior esquerda */
+    border-radius: 8px 0 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 10px;
+    padding-right: 8px; /* Reduzi o padding direito */
 }
 
 .chat-header h2 {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.85em; /* Diminuí a fonte */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -182,10 +182,10 @@ main {
     background-color: transparent;
     color: white;
     border: 1px solid white;
-    padding: 5px 8px;
-    border-radius: 6px;
+    padding: 4px 6px; /* Reduzi o padding */
+    border-radius: 4px; /* Arredondamento menor */
     cursor: pointer;
-    font-size: 0.7em;
+    font-size: 0.65em; /* Diminuí a fonte */
     font-weight: bold;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -195,22 +195,22 @@ main {
 }
 
 .chat-messages {
-    padding: 10px;
-    max-height: calc(100% - 120px); /* Ajustar altura com base no input e sugestões */
+    padding: 8px; /* Reduzi o padding */
+    max-height: calc(100% - 110px); /* Ajustei a altura */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px; /* Reduzi o espaçamento */
     background-color: transparent;
 }
 
 .message {
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 0.8em;
+    padding: 6px 10px; /* Reduzi o padding */
+    border-radius: 6px; /* Arredondamento menor */
+    font-size: 0.75em; /* Diminuí a fonte */
     color: white;
-    margin-bottom: 4px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3px; /* Reduzi a margem */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra menor */
     word-break: break-word;
 }
 
@@ -228,18 +228,18 @@ main {
 .chat-input {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 8px; /* Reduzi o padding */
     border-top: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo levemente escuro */
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .chat-input input {
     flex-grow: 1;
-    padding: 8px;
+    padding: 6px; /* Reduzi o padding */
     border: 1px solid white;
-    border-radius: 10px;
-    margin-right: 8px;
-    font-size: 0.75em;
+    border-radius: 8px; /* Arredondamento menor */
+    margin-right: 6px; /* Reduzi a margem */
+    font-size: 0.7em; /* Diminuí a fonte */
     transition: border-color 0.2s ease;
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
@@ -259,10 +259,10 @@ main {
     background-color: transparent;
     color: white;
     border: 1px solid var(--primary-color);
-    padding: 8px 12px;
-    border-radius: 10px;
+    padding: 6px 10px; /* Reduzi o padding */
+    border-radius: 8px; /* Arredondamento menor */
     cursor: pointer;
-    font-size: 0.75em;
+    font-size: 0.7em; /* Diminuí a fonte */
     font-weight: bold;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
 }
@@ -275,21 +275,21 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8px;
-    gap: 4px;
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo levemente escuro */
-    border-radius: 0 0 8px 0; /* Arredondar apenas a parte inferior esquerda */
-    margin-top: 8px;
+    padding: 6px; /* Reduzi o padding */
+    gap: 3px; /* Reduzi o espaçamento */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 0;
+    margin-top: 6px; /* Reduzi a margem */
 }
 
 .suggestion-button {
     background-color: var(--suggestion-bg);
     color: white;
     border: 1px solid var(--suggestion-bg);
-    padding: 4px 8px;
+    padding: 3px 6px; /* Reduzi o padding */
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.7em;
+    font-size: 0.6em; /* Diminuí a fonte */
     font-weight: bold;
     opacity: 0.9;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
@@ -304,42 +304,62 @@ main {
 /* Media Queries para telas menores */
 @media (max-width: 768px) {
     body {
-        flex-direction: column; /* Voltar para coluna em telas menores */
+        flex-direction: column;
         align-items: center;
-        padding-right: 0; /* Remover espaço para o chatbot */
+        padding-right: 0;
     }
 
     main {
-        margin-top: 110px; /* Ajustar margem superior */
+        margin-top: 110px;
         width: 95%;
+        gap: 10px; /* Reduzi o espaçamento */
+    }
+
+    .destaques-section {
+        width: 95%; /* Voltar para largura maior em telas menores */
+        padding: 10px; /* Ajustar padding */
     }
 
     .destaques-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajustar para telas menores */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajustar para telas menores */
+        gap: 6px; /* Reduzir gap */
+    }
+
+    .destino img {
+        height: 80px; /* Reduzir altura da imagem */
     }
 
     .chatbot-section-inferior {
         position: fixed;
         bottom: 0;
         left: 0;
-        top: auto; /* Liberar a propriedade 'top' */
+        top: auto;
         width: 100%;
         min-width: auto;
-        height: auto; /* Altura automática */
-        border-radius: 8px 8px 0 0; /* Arredondar a parte superior */
-        box-shadow: 0 -2px 10px var(--shadow-color); /* Sombra superior */
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 -2px 10px var(--shadow-color);
+        padding: 10px; /* Ajustar padding */
     }
 
     .chat-header {
-        border-radius: 8px 8px 0 0; /* Arredondar a parte superior */
+        border-radius: 8px 8px 0 0;
+        padding: 8px; /* Ajustar padding */
     }
 
     .chat-messages {
         max-height: 150px;
+        padding: 8px; /* Ajustar padding */
+        gap: 4px; /* Reduzir gap */
+    }
+
+    .chat-input {
+        padding: 8px; /* Ajustar padding */
     }
 
     .chat-suggestions {
-        border-radius: 0 0 8px 8px; /* Arredondar a parte inferior */
+        padding: 5px; /* Ajustar padding */
+        gap: 2px; /* Reduzir gap */
     }
 }
 
@@ -351,13 +371,73 @@ main {
         display: none;
     }
     .destaques-grid {
-        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
-        gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 10px; /* Ajustar gap */
     }
     .destino img {
-        height: 140px;
+        height: 100px; /* Ajustar altura da imagem */
     }
     .chat-messages {
         max-height: 120px;
+        padding: 6px; /* Ajustar padding */
+    }
+    .chat-input {
+        padding: 6px; /* Ajustar padding */
+    }
+    .chat-suggestions {
+        padding: 4px; /* Ajustar padding */
+        gap: 1px; /* Reduzir gap */
+    }
+}
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative; /* Para garantir que funcione com o body flex */
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px; /* Adiciona um espaço acima do footer */
+}
+
+.footer-content {
+    max-width: 960px; /* Largura máxima para alinhar com o conteúdo principal (opcional) */
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.footer-content p {
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}
+
+.footer-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-top: 10px;
+}
+
+.contact-info p {
+    display: inline;
+    margin: 0 10px;
+}
+
+.contact-info i {
+    margin-right: 5px;
+}
+
+/* Media queries para o footer em telas menores */
+@media (max-width: 768px) {
+    .contact-info p {
+        display: block;
+        margin: 5px 0;
     }
 }
