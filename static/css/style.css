@@ -19,7 +19,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s ease;
-    background-image: url('/static/images/nova_imagem.jpg');
+    background-image: url('/static/images/novo_fundo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
