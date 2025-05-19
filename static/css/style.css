@@ -11,8 +11,6 @@
     --suggestion-hover-bg: rgba(48, 63, 159, 1);
     --shadow-color: rgba(0, 0, 0, 0.4);
     --chatbot-bg: #1565c0;
-    /* Adicionei uma variável para a cor de fundo do body para facilitar a transparência */
-    --body-bg-image: url('../images/fundo_buenos_aires.jpg');
 }
 
 body {
@@ -21,8 +19,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s ease;
-    /* CORREÇÃO: O caminho correto para a imagem de fundo deve ser relativo à PASTA RAIZ do seu projeto no Heroku, que é 'static'. */
-    background-image: var(--body-bg-image);
+    background-image: url('../images/fundo_buenos_aires.jpg'); /* POTENCIAL ERRO AQUI */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -80,7 +77,7 @@ main {
     width: 100%; /* Ocupa toda a largura */
     box-sizing: border-box;
     margin-top: 120px; /* Ajustei a margem superior */
-    background-color: transparent; /* Fundo transparente */
+    background-color: transparent;
 }
 
 .destaques-section h2 {
@@ -103,8 +100,6 @@ main {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column; /* Alinha imagem e info verticalmente */
 }
 
 .destino:hover {
@@ -112,20 +107,12 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Novo estilo para o container da imagem */
-.destino-imagem {
+.destino img {
     width: 100%;
-    height: auto; /* A altura se ajustará à proporção da imagem */
-    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas */
+    height: 100px;
+    object-fit: contain; /* A MÁGICA ACONTECE AQUI! */
+    background-color: white; /* ADICIONAMOS UM FUNDO BRANCO PARA CASO A IMAGEM NÃO PREENCHA TODO O ESPAÇO */
     border-radius: 8px 8px 0 0;
-}
-
-.destino-imagem img {
-    width: 100%;
-    height: auto; /* A altura se ajustará à proporção da imagem */
-    display: block; /* Remove espaços extras abaixo da imagem */
-    object-fit: contain; /* Garante que a imagem inteira seja visível */
-    background-color: white; /* Fundo branco caso a imagem não preencha */
 }
 
 .destino h3 {
@@ -133,14 +120,12 @@ main {
     font-size: 0.9em;
     color: var(--primary-color);
     font-weight: bold;
-    text-align: center; /* Centralizei o texto */
 }
 
 .destino p {
     font-size: 0.7em;
     padding: 0 8px 8px;
     opacity: 0.8;
-    text-align: center; /* Centralizei o texto */
 }
 
 .chatbot-section-inferior {
@@ -156,7 +141,7 @@ main {
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: transparent; /* Cor de fundo transparente */
+    background-color: background-color: transparent; /* Cor de fundo mais sólida */
     margin: 0;
 }
 
@@ -212,7 +197,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    background-color: transparent; /* Fundo transparente */
+    background-color: background-color: transparent;; /* Fundo levemente transparente */
 }
 
 .message {
@@ -241,7 +226,7 @@ main {
     align-items: center;
     padding: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: transparent; /* Fundo transparente */
+    background-color: transparent /* Fundo levemente escuro */
 }
 
 .chat-input input {
@@ -288,7 +273,7 @@ main {
     justify-content: center;
     padding: 8px;
     gap: 4px;
-    background-color: transparent; /* Fundo transparente */
+    background-color: transparent; /* Fundo levemente escuro */
     border-radius: 0 0 8px 8px;
     margin-top: 8px;
 }
